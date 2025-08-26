@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estrella Dorada CF — Profil Klub</title>
+  <meta name="description" content="Website profil klub sepakbola: perkenalan klub, pemain kunci, manajer, stadion, dan daftar pemain." />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="Logo-badge/LOGO.png"/>
+  <style>
+    body {
+    font-family: 'Poppins', sans-serif; /* isi teks */
+    }
+
+    h1, h2, .badge-img {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 5px;   /* jarak antar huruf */
+    line-height: 1.2;      /* tinggi baris */
+    text-transform: uppercase;
+    }
+
+
+    :root{
+      --bg: #0b0f17;
+      --card: #101826;
+      --muted: #9fb0c8;
+      --text: #e8f0ff;
+      --accent: #4da3ff;
+      --accent-2: #29e6a7;
+      --danger: #ff5c7a;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif;background:linear-gradient(180deg,#0b0f17,#0b1220), var(--bg);color:var(--text)}
+    a{color:var(--accent);text-decoration:none}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(11,15,23,.7);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #1b2640}
+    .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .badge{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#06111b;font-weight:900}
+    .nav ul{display:flex;gap:14px;margin:0 0 0 auto;padding:0;list-style:none}
+    .nav a:hover{opacity:.9}
+    .cta{margin-left:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#05121a;padding:8px 14px;border-radius:999px;font-weight:700}
+
+    /* HERO */
+    .hero{max-width:1100px;margin:28px auto;padding:0 20px 8px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}
+    .hero-card{background:radial-gradient(1200px 400px at -20% -10%,rgba(77,163,255,.2),transparent),var(--card);border:1px solid #1a2742;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .hero h1{font-size:clamp(28px,5vw,48px);margin:4px 0 8px}
+    .hero p{color:var(--muted);line-height:1.6}
+    .hero .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .chip{border:1px solid #243454;background:#0f1829;border-radius:999px;padding:6px 10px;color:#c9d8f5;font-size:13px;}
+
+    .hero-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    .stat{background:#0e1726;border:1px solid #1a2742;border-radius:14px;padding:12px;text-align:center}
+    .stat .num{font-weight:800;font-size:22px}
+    .stat .lbl{font-size:12px;color:#a9bad6}
+
+    .hero img{width:100%;height:auto;border-radius:var(--radius);border:1px solid #1a2742;box-shadow:var(--shadow)}
+
+    /* SECTION */
+    section{max-width:1100px;margin:28px auto;padding:0 20px}
+    section h2{font-size:28px;margin:4px 0 14px}
+    .subtitle{color:var(--muted);margin-top:-6px}
+
+    /* CARDS */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .col-4{grid-column:span 4}
+    .col-6{grid-column:span 6}
+    .card{background:var(--card);border:1px solid #1a2742;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    .card h3{margin:0 0 8px}
+    .meta{font-size:13px;color:var(--muted)}
+
+    /* PLAYER CARDS */
+    .players{grid-auto-rows:1fr}
+    .player{display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#182840,#0f182a);display:grid;place-items:center;border:1px solid #213257}
+    .badge-pos{margin-left:auto;font-size:12px;border:1px solid #28416f;background:#0d1729;color:#cde5ff;padding:4px 8px;border-radius:999px}
+
+    /* MANAGER & STADIUM */
+    .kv{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    
+
+    /* TABLE */
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .input, .select{background:#0e1726;border:1px solid #22355c;color:var(--text);border-radius:10px;padding:10px 12px}
+    .table-wrap{overflow:auto;border:1px solid #1a2742;border-radius:14px}
+    table{width:100%;border-collapse:collapse;min-width:720px}
+    thead th{position:sticky;top:0;background:#0f192a;border-bottom:1px solid #1a2742;text-align:left;padding:12px}
+    tbody td{padding:12px;border-bottom:1px solid #14233f}
+    tbody tr:hover{background:#0f1b31}
+
+    /* FOOTER */
+    footer{max-width:1100px;margin:40px auto 60px;padding:0 20px;color:#98abc9}
+    .small{font-size:12px;color:#93a6c7}
+    .top{position:fixed;bottom:16px;right:16px;border-radius:999px;padding:10px 12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#001018;border:none;font-weight:800;box-shadow:var(--shadow);cursor:pointer}
+
+    /* RESPONSIVE */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr}
+      .kv{grid-template-columns:1fr}
+      .col-4{grid-column:span 6}
+      .col-6{grid-column:span 12}
+    }
+    @media (max-width:640px){
+      .col-4{grid-column:span 12}
+      .nav ul{display:none}
+    }
+    .badge-img{
+        width:35px;
+        height:40px;
+        object-fit:cover;   /* biar gambar nggak gepeng */
+    }
+    .manager-img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid #1a2742;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+    }
+    #kunci h2{
+        font-size: 40px;
+    }
+    #manajer h2{
+        font-size: 40px;
+    }
+    #stadion h2{
+        font-size: 40px;
+    }
+    #skuad h2{
+        font-size: 40px;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="Logo-badge/LOGO.png" alt="Logo RC Selvira" class="badge-img">
+            Estrella Dorada CF
+        </div>
+
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kunci">Pemain Kunci</a></li>
+        <li><a href="#manajer">Manajer</a></li>
+        <li><a href="#stadion">Stadion</a></li>
+        <li><a href="#skuad">Skuad</a></li>
+      </ul>
+      <a class="cta" href="#tickets" onclick="alert('Ini contoh — tautkan ke halaman tiket/merch kamu.')">Tiket & Merch</a>
+    </div>
+  </nav>
+
+  <!-- HERO / TENTANG -->
+  <header id="tentang" class="hero">
+    <div class="hero-card">
+        <span class="chip">Didirikan: 2024</span><br><br>
+        <h1>Estrella Dorada CF</h1>
+        <p id="clubDesc" style="font-size: 22px;">
+                Estrella Dorada CF adalah klub sepakbola modern yang lahir dengan semangat membara untuk menghadirkan permainan penuh energi dan kreativitas. Nama “Estrella Dorada” yang berarti Bintang Emas
+            <span id="dots">...</span>
+            <span id="more" style="display:none">
+                melambangkan ambisi klub untuk selalu bersinar di setiap kompetisi. Dengan filosofi permainan menyerang cepat dan penguasaan bola, klub ini juga dikenal sebagai wadah berkembangnya talenta muda yang berani tampil di panggung besar.<br><br>
+                Estadio Luz Dorada, markas kebanggaan klub, menjadi saksi perjalanan penuh gairah para pemain dan pendukung setia. Stadion dengan atmosfer megah ini dirancang untuk menghadirkan pengalaman menonton yang tak terlupakan, lengkap dengan fasilitas modern dan tribun yang selalu bergemuruh oleh chants para suporter. Setiap pertandingan di Luz Dorada selalu terasa seperti festival, penuh warna dan semangat yang menggetarkan jiwa.
+            </span>
+            <a href="javascript:void(0);" onclick="toggleDesc()" id="btnDesc">Selengkapnya</a>
+        </p>
+
+    <script>
+        function toggleDesc() {
+        const dots = document.getElementById("dots");
+        const more = document.getElementById("more");
+        const btn = document.getElementById("btnDesc");
+        
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            more.style.display = "none";
+            btn.textContent = "Selengkapnya";
+        } else {
+            dots.style.display = "none";
+            more.style.display = "inline";
+            btn.textContent = "Sembunyikan";
+        }
+        }
+    </script>
+
+      <div class="chips">
+        <span class="chip">Julukan: Los Dorados</span>
+        <span class="chip">Warna: Putih & Biru</span>
+        <span class="chip">Formasi Favorit: 4-2-3-1</span>
+      </div>
+
+      <div class="hero-stat">
+      <div class="stat"><div class="num" id="statGames">0</div><div class="lbl">Main Musim Ini</div></div>
+      <div class="stat"><div class="num" id="statGoals">0</div><div class="lbl">Gol Dicetak</div></div>
+      <div class="stat"><div class="num" id="statAvgAge">0</div><div class="lbl">Rata-rata Usia</div></div>
+      <div class="stat"><div class="num" id="statPosisi">0</div><div class="lbl">Posisi Klasemen</div></div>
+      <div class="stat"><div class="num" id="statTrophy">0</div><div class="lbl">Trophy</div></div>
+      <div class="stat"><div class="num" id="statValue">0</div><div class="lbl">Nilai Tim</div></div>
+    </div>
+
+
+
+      </div>
+    </div>
+    <img src="Logo-badge/LOGO.png" alt="Stadion sepakbola malam hari" loading="lazy" />
+  </header>
+
+  <!-- PEMAIN KUNCI -->
+  <section id="kunci">
+    <h2>Pemain Kunci</h2>
+    <p class="subtitle">Bintang utama musim ini</p>
+    <div id="keyPlayers" class="grid players"></div>
+  </section>
+
+  <!-- MANAJER & STADION -->
+  <section id="manajer">
+    <h2>Manajer Taktis / Coach</h2>
+    <div class="kv">
+      <div class="card">
+        <h3 id="managerName" style="font-size: 30px;" >—</h3>
+        <div class="meta" id="managerMeta">—</div>
+        <p id="managerBio" style="margin-top:10px;color:var(--muted); font-size: 22px;">—</p>
+      </div>
+      <img src="Logo-badge/Tanpa judul (3 x 4 inci).png" alt="Foto Manajer" class="manager-img">
+    </div>
+  </section>
+
+  <section id="stadion">
+    <h2>Stadion Kandang</h2>
+    <div class="kv">
+      <div class="card">
+        <h3 id="stadiumName" style="font-size: 30px;">—</h3>
+        <div class="meta" id="stadiumMeta">—</div>
+        <p id="stadiumDesc" style="margin-top:10px;color:var(--muted); font-size: 22px;">—</p>
+      </div>
+      <img src="Logo-badge/comfortable-stadium-seats-of-stadium-seating29578722911.webp" alt="Stadion" class="manager-img">
+    </div>
+  </section>
+
+  <!-- SKUAD LENGKAP -->
+  <!-- SKUAD LENGKAP -->
+<section id="skuad">
+  <h2>Daftar Pemain Lengkap</h2>
+  <p class="subtitle">Klik pemain untuk melihat detail.</p>
+  <div class="toolbar">
+    <input id="search" class="input" placeholder="Cari nama / nomor punggung…" />
+    <select id="filterPos" class="select">
+      <option value="">Semua Posisi</option>
+      <option>GK</option>
+      <option>DF</option>
+      <option>MF</option>
+      <option>FW</option>
+    </select>
+    <button class="input" onclick="exportCSV()">Unduh CSV</button>
+  </div>
+  <div class="table-wrap">
+    <table aria-label="Tabel daftar pemain">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Pos</th>
+          <th>Usia</th>
+          <th>Kebangsaan</th>
+          <th>Status</th>  <!-- tambahin ini -->
+          <th>Harga</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <button style="margin-top: 10px; padding: 10px; border-radius: 8px; background-color: #04537a;" ><a href="formasi.html" style="color: #ffffff;">SUSUNAN FORMASI</a></button>
+</section>
+
+<!-- MODAL UNTUK DETAIL PEMAIN -->
+<div id="playerModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="playerPhoto" src="" alt="Foto Pemain" style="width:100%;border-radius:10px">
+    <h3 id="playerName"></h3>
+    <p id="playerInfo"></p>
+    <h5 id="playerPrice"></h3>
+    <p id="playerStats"></p>
+  </div>
+</div>
+
+
+<style>
+  .modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.7);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000
+}
+  .modal-content {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+  .modal-content img{
+    width:120px;
+    height:420px;
+    object-fit:cover;
+    border-radius:50%;
+    margin-bottom:10px
+}
+  .modal h3{
+    margin:10px 0
+}
+  .close {
+    position: absolute;
+    color: white;
+    right: 20px;
+    top: 10px;
+    font-size: 35px;
+    cursor: pointer;
+}
+footer img{
+    height:40px;
+    margin-left:10px;
+    vertical-align:middle
+}
+</style>
+
+  <footer>
+    <p>© <span id="year"></span> Estrella Dorada CF. All Rights Reserved.</p>
+    <img src="Logo-badge/Desain tanpa judul.png" alt="SM25">
+  </footer>
+
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+  <!-- ===================== JS ===================== -->
+  <script>
+  // ===================== DATA KONFIG =====================
+const FLAGS_EUROPE = {
+    ALB: "https://flagcdn.com/w20/al.png", // Albania
+    AND: "https://flagcdn.com/w20/ad.png", // Andorra
+    ARM: "https://flagcdn.com/w20/am.png", // Armenia
+    AUT: "https://flagcdn.com/w20/at.png", // Austria
+    AZE: "https://flagcdn.com/w20/az.png", // Azerbaijan
+    BEL: "https://flagcdn.com/w20/be.png", // Belgia
+    BIH: "https://flagcdn.com/w20/ba.png", // Bosnia & Herzegovina
+    BUL: "https://flagcdn.com/w20/bg.png", // Bulgaria
+    CRO: "https://flagcdn.com/w20/hr.png", // Kroasia
+    CYP: "https://flagcdn.com/w20/cy.png", // Siprus
+    CZE: "https://flagcdn.com/w20/cz.png", // Ceko
+    DEN: "https://flagcdn.com/w20/dk.png", // Denmark
+    ENG: "https://flagcdn.com/w20/gb-eng.png", // Inggris
+    EST: "https://flagcdn.com/w20/ee.png", // Estonia
+    FIN: "https://flagcdn.com/w20/fi.png", // Finlandia
+    FRA: "https://flagcdn.com/w20/fr.png", // Prancis
+    GEO: "https://flagcdn.com/w20/ge.png", // Georgia
+    GER: "https://flagcdn.com/w20/de.png", // Jerman
+    GRE: "https://flagcdn.com/w20/gr.png", // Yunani
+    HUN: "https://flagcdn.com/w20/hu.png", // Hungaria
+    ISL: "https://flagcdn.com/w20/is.png", // Islandia
+    IRL: "https://flagcdn.com/w20/ie.png", // Irlandia
+    ITA: "https://flagcdn.com/w20/it.png", // Italia
+    KAZ: "https://flagcdn.com/w20/kz.png", // Kazakhstan
+    KOS: "https://flagcdn.com/w20/xk.png", // Kosovo
+    LAT: "https://flagcdn.com/w20/lv.png", // Latvia
+    LIE: "https://flagcdn.com/w20/li.png", // Liechtenstein
+    LTU: "https://flagcdn.com/w20/lt.png", // Lithuania
+    LUX: "https://flagcdn.com/w20/lu.png", // Luksemburg
+    MLT: "https://flagcdn.com/w20/mt.png", // Malta
+    MDA: "https://flagcdn.com/w20/md.png", // Moldova
+    MNE: "https://flagcdn.com/w20/me.png", // Montenegro
+    NED: "https://flagcdn.com/w20/nl.png", // Belanda
+    MKD: "https://flagcdn.com/w20/mk.png", // Makedonia Utara
+    NOR: "https://flagcdn.com/w20/no.png", // Norwegia
+    POL: "https://flagcdn.com/w20/pl.png", // Polandia
+    POR: "https://flagcdn.com/w20/pt.png", // Portugal
+    ROU: "https://flagcdn.com/w20/ro.png", // Rumania
+    RUS: "https://flagcdn.com/w20/ru.png", // Rusia
+    SMR: "https://flagcdn.com/w20/sm.png", // San Marino
+    SCO: "https://flagcdn.com/w20/gb-sct.png", // Skotlandia
+    SRB: "https://flagcdn.com/w20/rs.png", // Serbia
+    SVK: "https://flagcdn.com/w20/sk.png", // Slovakia
+    SLO: "https://flagcdn.com/w20/si.png", // Slovenia
+    ESP: "https://flagcdn.com/w20/es.png", // Spanyol
+    SWE: "https://flagcdn.com/w20/se.png", // Swedia
+    SUI: "https://flagcdn.com/w20/ch.png", // Swiss
+    TUR: "https://flagcdn.com/w20/tr.png", // Turki
+    UKR: "https://flagcdn.com/w20/ua.png", // Ukraina
+    WAL: "https://flagcdn.com/w20/gb-wls.png", // Wales
+    BRA: "https://flagcdn.com/w20/br.png", // Brazil
+    IND: "https://flagcdn.com/w20/in.png", // India
+    IDN: "https://flagcdn.com/w20/id.png", // Indonesia
+    ARG: "https://flagcdn.com/w20/ar.png", // Argentina 
+    MEX: "https://flagcdn.com/w20/mx.png", // Mexico
+    COL: "https://flagcdn.com/w20/co.png", // Colombia
+};
+
+  const CLUB = {
+    name: 'Estrella Dorada CF',
+    founded: 2024,
+    colors: ['Putih','Biru'],
+    formation: '4-2-3-1',
+    nickname: 'Los Dorados',
+    seasonMatches: 1,
+    seasonGoals: 2,
+    trophies: 2,
+    position: 7,
+  };
+
+  const MANAGER = {
+    name: 'Julian Mahler',
+    age: 54,
+    nationality: 'Indonesia',
+    style: 'Bermain antar lini & serangan balik cepat',
+    bio: 'Julian Mahler adalah pelatih berusia 54 tahun asal Indonesia yang membawa pengalaman panjang serta disiplin tinggi dalam dunia sepakbola. Kariernya berawal dari level domestik hingga akhirnya dipercaya menukangi klub luar negeri, membuatnya dikenal sebagai sosok yang tegas, visioner, dan mampu membentuk karakter tim yang solid. Dalam kepelatihannya, Mahler mengusung filosofi permainan antar lini yang rapih, memastikan setiap sektor saling terhubung dengan baik. Ia juga mengandalkan serangan balik cepat sebagai senjata utama, memanfaatkan kecepatan sayap dan kecerdasan gelandang dalam membaca ruang. Kombinasi ini menjadikan Estrella Dorada CF tampil berani menghadapi lawan yang lebih besar, sekaligus menjaga identitas sebagai tim pekerja keras yang penuh determinasi.',
+  };
+
+  const STADIUM = {
+    name: 'Estadio Luz Dorada',
+    city: 'Malaga',
+    capacity: 13000,
+    pitch: '105m x 68m',
+    built: 2025,
+    desc: 'Estadio Luz Dorada adalah markas kebanggaan Estrella Dorada CF yang berdiri di kota Málaga, Spanyol. Meski kapasitasnya “hanya” 13.000 kursi, stadion ini dikenal dengan atmosfer intim dan dukungan fanatik dari suporter yang selalu memenuhi tribun. Desainnya modern namun tetap menjaga kedekatan antara pemain dan penonton, sehingga setiap laga terasa lebih hidup dan penuh tekanan bagi lawan.',
+  };
+
+  /**
+   * Daftar pemain contoh. Flag key=true untuk pemain kunci.
+   * Pos: GK/DF/MF/FW
+   */
+  const PLAYERS = [
+  {
+    no:22, name:'Richard Scott', pos:'GK', age:26, nat:'ESP', status:'Starter', key:false, harga: '20',
+    photo:'logo-badge/kosong.jpg',
+    stats: {
+        penampilan : 153,
+        goals : 0,
+        assists : 6,
+        menitBermain : 13560,
+        rating : 7.79
+    }
+  },
+  {
+    no:19, name:'Pascal Loretz', pos:'GK', age:28, nat:'SUI', status:'Rotasi', key:false, harga: '10,5',
+    photo:'logo-badge/pascalLoretz.webp',
+    stats: {
+        penampilan : 103,
+        goals : 0,
+        assists : 3,
+        menitBermain : 9375,
+        rating : 6.96
+    }
+  },
+  {
+    no:13, name:'Gonzalo Serrano', pos:'GK', age:18, nat:'ESP', status:'Cadangan', key:false, harga: '92,5k',
+    photo:'logo-badge/kosong.jpg',
+    stats:{
+        penampilan : 0,
+        goals : 0,
+        assists : 0,
+        menitBermain : 0,
+        rating : 0
+    }
+  },
+  {
+    no:28, name:'Biel Murillo', pos:'DF', age:21, nat:'ESP', status:'Cadangan', key:false, harga: '260k',
+    photo:'logo-badge/kosong.jpg',
+    stats:{
+        penampilan : 0,
+        goals : 0,
+        assists : 0,
+        menitBermain : 137,
+        rating : 4.00
+    }
+  },
+  {
+    no:5, name:'Albian Hajdari', pos:'DF', age:28, nat:'SUI', status:'Starter', key:false, harga: '13',
+    photo:'logo-badge/albianHajdari.webp',
+    stats:{
+        penampilan : 298,
+        goals : 1,
+        assists : 10,
+        menitBermain : 25103,
+        rating : 6.89
+    }
+  },
+  {
+    no:4, name:'Luka Vuskovic', pos:'DF', age:24, nat:'CRO', status:'Starter', key:true, harga: '55',
+    photo:'logo-badge/LukaVuskovic.webp',
+    stats:{
+        penampilan : 125,
+        goals : 4,
+        assists : 1,
+        menitBermain : 11365,
+        rating : 6.91
+    }
+  },
+  {
+    no:18, name:'Caoimhin Doyle', pos:'DF', age:22, nat:'ITA', status:'Rotasi', key:false, harga: '28',
+    photo:'logo-badge/kosong.jpg',
+    stats:{
+        penampilan : 298,
+        goals : 1,
+        assists : 10,
+        menitBermain : 25103,
+        rating : 6.89
+    }
+  },
+  {
+    no:3, name:'Aske Adelgaard', pos:'DF', age:27, nat:'DEN', status:'Starter', key:false, harga: '10,5',
+    photo:'logo-badge/AkeAdelgaard.webp',
+    stats:{
+        penampilan : 253,
+        goals : 13,
+        assists : 27,
+        menitBermain : 19822,
+        rating : 6.75
+    }
+  },
+  {
+    no:2, name:'Martim Fernandes', pos:'DF', age:25, nat:'POR', status:'Starter', key:true, harga: '33',
+    photo:'logo-badge/MartimFernandes.webp',
+    stats:{
+        penampilan : 147,
+        goals : 0,
+        assists : 21,
+        menitBermain : 12910,
+        rating : 6.36
+    }
+  },
+  {
+    no:25, name:'Joel Gonzalez', pos:'DF', age:22, nat:'ESP', status:'Cadangan', key:false, harga: '9,9k',
+    photo:'logo-badge/kosong.jpg',
+    stats:{
+        penampilan : 13,
+        goals : 0,
+        assists : 0,
+        menitBermain : 1260,
+        rating : 5.16
+    }
+  },
+  {
+    no:14, name:'Axl Doyle', pos:'DF', age:24, nat:'ENG', status:'Rotasi', key:false, harga: '12',
+    photo:'logo-badge/kosong.jpg',
+    stats:{
+        penampilan : 175,
+        goals : 1,
+        assists : 28,
+        menitBermain : 16291,
+        rating : 6.09
+    }
+  },
+  {
+    no:15, name:'Hugo Sotelo', pos:'MF', age:27, nat:'ESP', status:'Starter', key:false, harga: '23',
+    photo:'logo-badge/HugoSotelo.webp',
+    stats:{
+        penampilan : 170,
+        goals : 1,
+        assists : 36,
+        menitBermain : 15209,
+        rating : 7.62
+    }
+  },
+  {
+    no:21, name:'Youri Regeer', pos:'MF', age:27, nat:'NED', status:'Starter', key:false, harga: '14,5',
+    photo:'logo-badge/youriRegeer.webp',
+    stats:{
+        penampilan : 277,
+        goals : 6,
+        assists : 46,
+        menitBermain : 24404,
+        rating : 7.77
+    }
+  },
+  {
+    no:31, name:'Pep Vazquez', pos:'MF', age:25, nat:'ESP', status:'Cadangan', key:false, harga: '1k',
+    photo:'logo-badge/kosong.jpg',
+    stats:{
+        penampilan : 17,
+        goals : 1,
+        assists : 3,
+        menitBermain : 1440,
+        rating : 6.96
+    }
+  },
+  {
+    no:16, name:'Ruben Van Bommel', pos:'MF', age:26, nat:'NED', status:'Starter', key:false, harga: '17.5',
+    photo:'logo-badge/RubenVanBommel.webp',
+    stats:{
+        penampilan : 172,
+        goals : 37,
+        assists : 77,
+        menitBermain : 16316,
+        rating : 7.34
+    }
+  },
+  {
+    no:8, name:'Jovan Ciric', pos:'MF', age:24, nat:'CRO', status:'Rotasi', key:false, harga: '10',
+    photo:'logo-badge/jovanCiric.jpg',
+    stats:{
+        penampilan : 71,
+        goals : 12,
+        assists : 10,
+        menitBermain : 8248,
+        rating : 7.56
+    }
+  },
+  {
+    no:6, name:'Nico Paz', pos:'MF', age:26, nat:'ARG', status:'Starter', key:true, harga: '31,5',
+    photo:'logo-badge/NicoPaz.webp',
+    stats:{
+        penampilan : 285,
+        goals : 46,
+        assists : 44,
+        menitBermain : 24362,
+        rating : 7.84
+    }
+  },
+  {
+    no:7, name:'Valery Fernandez', pos:'MF', age:31, nat:'ESP', status:'Rotasi', key:false, harga: '6',
+    photo:'logo-badge/ValeryFernandez.webp',
+    stats:{
+        penampilan : 211,
+        goals : 67,
+        assists : 58,
+        menitBermain : 19937,
+        rating : 7.80
+    }
+  },
+  {
+    no:12, name:'Paris Brunner', pos:'FW', age:25, nat:'GER', status:'Rotasi', key:false, harga: '18',
+    photo:'logo-badge/ParisBrunner.webp',
+    stats:{
+        penampilan : 17,
+        goals : 15,
+        assists : 2,
+        menitBermain : 1990,
+        rating : 6.93
+    }
+  },
+  {
+    no:9, name:'Muhamed-Ali Cho', pos:'FW', age:27, nat:'FRA', status:'Rotasi', key:false, harga: '20',
+    photo:'logo-badge/MohamedAliCho.webp',
+    stats:{
+        penampilan : 129,
+        goals : 138,
+        assists : 14,
+        menitBermain : 11396,
+        rating : 7.79
+    }
+  },
+  {
+    no:11, name:'Vitor Roque', pos:'FW', age:26, nat:'BRA', status:'Starter', key:false, harga: '31,5',
+    photo:'logo-badge/VitorRoque.webp',
+    stats:{
+        penampilan : 178,
+        goals : 178,
+        assists : 15,
+        menitBermain : 15615,
+        rating : 8.03
+    }
+  },
+  {
+    no:17, name:'Lucas Bergvall', pos:'MF', age:25, nat:'SWE', status:'Starter', key:false, harga: '12',
+    photo:'logo-badge/LucasBergvall.webp',
+    stats:{
+        penampilan : 25,
+        goals : 4,
+        assists : 8,
+        menitBermain : 1982,
+        rating : 6.97
+    }
+  },
+];
+
+
+  // ===================== END DATA =====================
+
+  function formatHarga(num) {
+  if (num >= 1_000_000) {
+    return "€" + (num / 1_000_000).toFixed(1) + "JT";
+  } else if (num >= 1000) {
+    return "€" + (num / 1000).toFixed(0) + "K";
+  } else {
+    return "€" + num; // fallback kalau ada angka kecil banget
+  }
+}
+
+
+  function parseHarga(hargaStr) {
+    if (!hargaStr) return 0;
+    let clean = hargaStr.toLowerCase().replace(/[€\s]/g, '').replace(',', '.');
+
+    if (clean.endsWith('k')) {
+      clean = clean.replace('k', '');
+      return parseFloat(clean) * 1000;
+    }
+
+    return parseFloat(clean) * 1_000_000;
+  }
+
+  function totalNilaiTim(players) {
+    return players.reduce((sum, p) => sum + parseHarga(p.harga), 0);
+  }
+
+  // render ke hero
+  const nilaiTim = totalNilaiTim(PLAYERS);
+  document.getElementById("statValue").textContent = 
+    "€" + (nilaiTim/1_000_000).toFixed(1) + "JT"; 
+
+
+  // Render hero numbers and chips 
+  
+  const statGames = document.getElementById('statGames'); 
+  const statGoals = document.getElementById('statGoals'); 
+  const statAvgAge = document.getElementById('statAvgAge');
+  const statPosisi = document.getElementById('statPosisi');
+  const statTrophy = document.getElementById('statTrophy');
+  const year = document.getElementById('year'); 
+  year.textContent = new Date().getFullYear(); 
+
+  function averageAge()
+  { 
+    if (!PLAYERS.length) return 0;
+    const total = PLAYERS.reduce((sum, p) => sum + p.age, 0); 
+    return (total / PLAYERS.length).toFixed(1); // satu angka di belakang koma
+  } 
+
+  statGames.textContent = CLUB.seasonMatches; 
+  statGoals.textContent = CLUB.seasonGoals;
+  statAvgAge.textContent = averageAge();
+  statPosisi.textContent = CLUB.position;
+  statTrophy.textContent = CLUB.trophies;
+
+
+  function averageAge(){ 
+  if (!PLAYERS.length) return 0;
+  const total = PLAYERS.reduce((sum, p) => sum + p.age, 0); 
+  return Math.round(total / PLAYERS.length); // bulatkan ke angka terdekat
+}
+
+  // Set manager & stadium text
+  document.getElementById('managerName').textContent = MANAGER.name;
+  document.getElementById('managerMeta').textContent = `${MANAGER.age} tahun · ${MANAGER.nationality} · Gaya: ${MANAGER.style}`;
+  document.getElementById('managerBio').textContent = MANAGER.bio;
+
+  document.getElementById('stadiumName').textContent = STADIUM.name;
+  document.getElementById('stadiumMeta').textContent = `${STADIUM.city} · ${STADIUM.capacity.toLocaleString('id-ID')} kursi · Lapangan ${STADIUM.pitch} · Dibuka ${STADIUM.built}`;
+  document.getElementById('stadiumDesc').textContent = STADIUM.desc;
+
+  // Render Key Players
+  function renderKeyPlayers()
+  {
+    const wrap = document.getElementById('keyPlayers');
+    wrap.innerHTML = '';
+    const keys = PLAYERS.filter(p=>p.key);
+    keys.forEach(p => {
+      const col = document.createElement('div');
+      col.className = 'col-4 card player';
+      col.innerHTML = `
+        <div class="avatar">
+            <img src="${p.photo}" alt="${p.name}" style="width:55px;height:55px;object-fit:cover;border-radius:10px">    
+        </div>
+        <div>
+          <h3>${p.no}. ${p.name}</h3>
+          <div class="meta">${p.nat} · ${p.age} tahun</div>
+        </div>
+        <span class="badge-pos">${p.pos}</span>
+      `;
+      wrap.appendChild(col);
+    });
+  }
+
+  // Render table
+  function renderTable(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const pos = document.getElementById('filterPos').value;
+  const body = document.getElementById('tableBody');
+  body.innerHTML = '';
+
+  PLAYERS
+    .filter(p => (pos ? p.pos === pos : true))
+    .filter(p => `${p.no} ${p.name}`.toLowerCase().includes(q))
+    .sort((a,b) => a.no - b.no)
+    .forEach(p => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${p.no}</td>
+        <td>${p.name}</td>
+        <td>${p.pos}</td>
+        <td>${p.age}</td>
+        <td>
+          <img src="${FLAGS_EUROPE[p.nat]}" alt="${p.nat}" 
+               style="width:20px;height:14px;border-radius:2px">
+        </td>
+        <td>${p.status}${p.key ? ' · Kunci' : ''}</td>
+        <td>${formatHarga(parseHarga(p.harga))}</td>
+      `;
+      tr.onclick = () => showModal(p);
+      body.appendChild(tr);
+    });
+}
+
+function showModal(player){
+    
+    document.getElementById('playerPhoto').src = player.photo;
+    document.getElementById('playerName').textContent = `${player.no}. ${player.name}`;
+    document.getElementById('playerInfo').innerHTML = `
+    Posisi: ${player.pos} | Usia: ${player.age} <br><br>
+    <img src="${FLAGS_EUROPE[player.nat]}"
+        alt="${player.nat}" 
+        style="width:20px;height:14px;border-radius:2px">`;
+    
+
+  document.getElementById('playerStats').innerHTML = `
+  <strong>Statistik:</strong><br>
+  Penampilan: ${player.stats.penampilan} <br>
+  Goal: ${player.stats.goals || 0} <br>
+  Assist: ${player.stats.assists || 0} <br>
+  Menit Bermain: ${player.stats.menitBermain} <br>
+  Rating Rata-rata: ${player.stats.rating} <br>
+`;
+
+  document.getElementById('playerModal').style.display = 'flex';
+}
+
+function closeModal(){
+  document.getElementById('playerModal').style.display = 'none';
+}
+  function exportCSV(){
+    const header = ['no','name','pos','age','nat','status','key'];
+    const rows = PLAYERS.map(p=> header.map(h=> p[h]));
+    const csv = [header.join(','), ...rows.map(r=>r.join(','))].join('\n');
+    const blob = new Blob([csv], {type:'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'skuad-rc-selvira.csv';
+    a.click(); URL.revokeObjectURL(url);
+  }
+
+  document.getElementById('search').addEventListener('input', renderTable);
+  document.getElementById('filterPos').addEventListener('change', renderTable);
+
+  // Init
+  renderKeyPlayers();
+  renderTable();
+  </script>
+</body>
+</html>
